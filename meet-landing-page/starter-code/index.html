@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Meet landing page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: inherit;
+      appearance: none;
+    }
+    body {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .font1{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 11vw;
+      line-height: 1.1;
+      font-weight: 900;
+      color: #28283d;
+    }
+    .font2{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 8.5333vw;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .font3{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 3.2vw;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: 1.0667vw;
+    }
+    .t-font4{
+      font-family: 'Red Hat Display', sans-serif;
+      color: #87879d;
+      font-size: 4vw;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .d-font5{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 4.2667vw;
+      line-height: 1.5;
+      font-weight: 900;
+      color: white;
+    }
+    .navi{
+      padding: 12.8vw 21.3333vw 0 21.3333vw;
+      height: 100%;
+      width: auto;
+    }
+    .navi img{
+      width: 31.4667vw;
+      height: 7.4667vw;
+    }
+    .hero{
+      padding: 17.0667vw 8.5333vw 8.5333vw 8.5333vw;
+      width: 100%;
+      height: auto;
+      overflow: visible; 
+    }
+    .hero-desktop{
+      display: none;
+    }
+    .combined{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12.8vw;
+      overflow: visible;
+      width: 81.3333vw;
+    }
+    .combined .combined-image{
+      overflow: visible;
+    }
+    .combined .combined-image img{
+      width: 115.4667vw;
+      height: 42.6667vw;
+    }
+    .text-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6.4vw;
+      text-align: center;
+    }
+    .buttons{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4.2667vw;
+    }
+    .buttons button:first-child{
+      display: flex;
+      gap: 2.1333vw;
+      border: none;
+      padding: 4.2667vw 10.6667vw;
+      border-radius: 7.7333vw;
+      text-align: center;
+      background-color: #4d96a9;
+    }
+    .buttons button:last-child{
+      width: fit-content;
+      height: auto;
+      padding: 4.2667vw 10.6667vw;
+      border: none;
+      border-radius: 7.7333vw;
+      background-color:#855fb1;
+    }
+    .main-contain{
+      display: flex;
+      flex-direction: column;
+      padding: 8.5333vw 8.5333vw 17.0667vw 8.5333vw;
+    }
+    .main-contain .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 17.0667vw;
+    }
+    .main-contain .content .number{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 21.3333vw;
+      width: 14.9333vw;
+      height: 14.9333vw;
+      border-radius: 50%;
+      text-align: center;
+      border: 1px solid #d1d1df;
+    }
+    .main-contain .content .number::before{
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 100%;
+      width: 1px;
+      height: 21.3333vw;
+      background-color: #d1d1df;
+    }
+    .main-contain .content .image-collage{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 4.2667vw;
+    }
+    .main-contain .content .image-collage img{
+      height: 38.4vw;
+      border-radius: 8px;
+    }
+    .main-contain .content .text-content{
+      display: flex;
+      flex-direction: column;
+      gap: 8.5333vw;
+    }
+    .main-contain .content .text-content .title{
+      display: flex;
+      flex-direction: column;
+      gap: 4.2667vw;
+      text-align: center;
+    }
+    .main-contain .content .text-content .para{
+      text-align: center;
+    }
+    .footer-cta{
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-cta .foot{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 17.0667vw 8.5333vw;
+      margin-top: 28.8vw;
+      gap: 17.0667vw;
+      background-image: url(./assets/mobile/image-footer.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+    .footer-cta .foot::before{
+      position: absolute;
+      content: "";
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(77,150,168, 0.85);
+      z-index: 1;
+    }
+    .footer-cta .foot .content{
+      display: flex;
+      flex-direction: column;
+      gap: 6.4vw;
+      align-items: center;
+      z-index: 2;
+      text-align: center;
+    }
+    .footer-cta .foot .content button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.1333vw;
+      padding: 4.2667vw 10.6667vw;
+      border-radius: 7.7333vw;
+      border: none;
+      background-color: #855fb1;
+    }
+    .footer-cta .foot .num{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: -28.8vw;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+    }
+    .footer-cta .num .line{
+      width: 1px;
+      height: 21.3333vw;
+      border: 1px solid #d1d1df;
+      background-color: #d1d1df;
+      font-size: 0;
+    }
+    .footer-cta .number2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 14.9333vw;
+      height: 14.9333vw;
+      border-radius: 50%;
+      border: 1px solid #d1d1df;
+      background-color: white;
+    }
+    @media (min-width:768px) {
+    .font1{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 8vw;
+      line-height: 1.1;
+      font-weight: 800;
+      color: #28283d;
+    }
+    .font2{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 4.6875vw;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .font3{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 1.8229vw;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: .5208vw;
+    }
+    .t-font4{
+      font-family: 'Red Hat Display', sans-serif;
+      color: #87879d;
+      font-size: 2.0833vw;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .d-font5{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 2.0833vw;
+      line-height: 1.5;
+      font-weight: 900;
+      color: white;
+    }
+    .navi{
+      padding: 6.25vw 10.4167vw 0 10.4167vw;
+      height: 100%;
+      width: auto;
+    }
+    .navi img{
+      width: 15.3646vw;
+      height: 3.6458vw;
+    }
+    .hero{
+      padding: 8.3333vw 4.1667vw;
+      width: 100%;
+      height: auto;
+      overflow: visible; 
+    }
+     .combined{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9.375vw;
+      overflow: visible;
+      width: 88.5417vw;
+    }
+    .combined .combined-image{
+      overflow: visible;
+    }
+    .combined .combined-image img{
+      width: 106.7708vw;
+      height: 39.4531vw;
+    }
+    .text-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.125vw;
+      text-align: center;
+      width: 58.3724vw;
+    }
+    .buttons{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 2.2135vw;
+    }
+    .buttons button:first-child{
+      display: flex;
+      gap: 1.0417vw;
+      border: none;
+      padding: 2.0833vw 5.2083vw;
+      border-radius: 3.776vw;
+      text-align: center;
+      background-color: #4d96a9;
+    }
+    .buttons button:last-child{
+      width: fit-content;
+      height: auto;
+      padding: 2.0833vw 5.2083vw;
+      border: none;
+      border-radius: 3.776vw;
+      background-color:#855fb1;
+    }
+    .main-contain{
+      display: flex;
+      flex-direction: column;
+      padding: 7.2917vw 4.1667vw 8.3333vw 4.1667vw;
+    }
+    .main-contain .content{
+    
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8.3333vw;
+    }
+    .main-contain .content .number{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 10.4167vw;
+      width: 7.2917vw;
+      height: 7.2917vw;
+      border-radius: 50%;
+      text-align: center;
+      border: 1px solid #d1d1df;
+    }
+    .main-contain .content .number::before{
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 100%;
+      width: 1px;
+      height: 10.4167vw;
+      background-color: #d1d1df;
+    }
+    .main-contain .content .image-collage{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr ;
+      gap: 3.125vw;
+    }
+    .main-contain .content .image-collage img{
+      width: 19.7917vw;
+      height: 20.8333vw;
+      border-radius: 8px;
+    }
+    .main-contain .content .text-content{
+      display: flex;
+      flex-direction: column;
+      width: 65.625vw;
+      gap: 4.1667vw;
+    }
+    .main-contain .content .text-content .title{
+      display: flex;
+      flex-direction: column;
+      gap: 2.0833vw;
+      text-align: center;
+    }
+    .main-contain .content .text-content .para{
+      text-align: center;
+    }
+    .footer-cta{
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-cta .foot{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      padding: 8.3333vw 4.1667vw;
+      margin-top: 14.0625vw;
+      background-image: url(./assets/tablet/image-footer.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+    .footer-cta .foot::before{
+      position: absolute;
+      content: "";
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(77,150,168, 0.85);
+      z-index: 1;
+    }
+    .footer-cta .foot .content{
+      width: 65.625vw;
+      display: flex;
+      flex-direction: column;
+      gap: 3.125vw;
+      align-items: center;
+      z-index: 2;
+      text-align: center;
+    }
+    .footer-cta .foot .content button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.0417vw;
+      padding: 2.0833vw 5.2083vw;
+      border-radius: 3.776vw;
+      border: none;
+      background-color: #855fb1;
+    }
+    .footer-cta .foot .num{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: -14.0625vw;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+    }
+    .footer-cta .num .line{
+      width: 1px;
+      height: 10.4167vw;
+      border: 1px solid #d1d1df;
+      background-color: #d1d1df;
+      font-size: 0;
+    }
+    .footer-cta .number2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 7.2917vw;
+      height: 7.2917vw;
+      border-radius: 50%;
+      border: 1px solid #d1d1df;
+      background-color: white;
+    }
+    }
+    @media (min-width:1440px){
+      .font1{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 64px;
+      line-height: 1.1;
+      font-weight: 800;
+      color: #28283d;
+    }
+    .font2{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 40px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .font3{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 16px;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: 4px;
+    }
+    .t-font4{
+      font-family: 'Red Hat Display', sans-serif;
+      color: #87879d;
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .d-font5{
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 900;
+      color: white;
+    }
+    .navi{
+      padding: 80px 80px 0 80px;
+      height: 100%;
+      width: auto;
+    }
+    .navi img{
+      width: 118px;
+      height: 28px;
+    }
+    .hero{
+      display: none;
+      padding: 8.3333vw 4.1667vw;
+      width: 100%;
+      height: auto;
+      overflow: visible; 
+    }
+    .hero-desktop{
+      display: flex;
+      padding: 64px 80px;
+    }
+    .hero-desktop .combined{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      overflow: visible;
+      width: 1120px;
+      height: 360px;
+    }
+    .hero-desktop .combined .faces-left{
+      width: 303.85px;
+      height: 360px;
+      position: relative;
+      overflow: visible;
+    }
+    .hero-desktop .combined .faces-right{
+      width: 303.85px;
+      height: 360px;
+      position: relative;
+      overflow: visible;
+    }
+    .hero-desktop .combined .faces-left img{
+      position: absolute;
+      top: 0;
+      right: 186px;
+    }
+    .hero-desktop .combined .faces-right img{
+      position: absolute;
+      left: 95.85px;
+      top: 57px;
+    }
+    .hero-desktop .combined  img{
+      width: 394px;
+      height: 303px;
+    }
+    .text-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+      width: 448.3px;
+    }
+    .buttons{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 17px;
+    }
+    .buttons button:first-child{
+      display: flex;
+      gap: 8px;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 29px;
+      text-align: center;
+      background-color: #4d96a9;
+    }
+    .buttons button:first-child:hover{
+      display: flex;
+      gap: 8px;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 29px;
+      text-align: center;
+      background-color: #71c0d4;
+      cursor: pointer;
+    }
+    .buttons button:last-child{
+      width: fit-content;
+      height: auto;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 29px;
+      background-color:#855fb1;
+    }
+    .buttons button:last-child:hover{
+      width: fit-content;
+      height: auto;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 29px;
+      background-color: #b18bdd;
+      cursor: pointer;
+    }
+    .main-contain{
+      display: flex;
+      flex-direction: column;
+      padding: 56px 80px 72px 80px;
+    }
+    .main-contain .content{
+    
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 64px;
+    }
+    .main-contain .content .number{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 80px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      text-align: center;
+      border: 1px solid #d1d1df;
+    }
+    .main-contain .content .number::before{
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 100%;
+      width: 1px;
+      height: 80px;
+      background-color: #d1d1df;
+    }
+    .main-contain .content .image-collage{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr ;
+      gap: 32px;
+    }
+    .main-contain .content .image-collage img{
+      width: 256px;
+      height: 256px;
+      border-radius: 8px;
+    }
+    .main-contain .content .text-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 544px;
+      height: 235px;
+      gap: 32px;
+    }
+    .main-contain .content .text-content .title{
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      width: 445px;
+      height: 122px;
+    }
+    .main-contain .content .text-content .para{
+      text-align:center;
+    }
+    .footer-cta{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-cta .foot{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      padding: 112px 80px;
+      margin-top: 108px;
+      background-image: url(./assets/desktop/image-footer.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+    .footer-cta .foot::before{
+      position: absolute;
+      content: "";
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(77,150,168, 0.85);
+      z-index: 1;
+    }
+    .footer-cta .foot .content{
+      width: 1120px;
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      justify-content: space-between;
+      z-index: 2;
+      text-align: left;
+    }
+    .footer-cta .foot .content .p2{
+      width: 355px;
+      height: 81px;
+    }
+    .footer-cta .foot .content .p1{
+      width: 445px;
+      height: 88px;
+    }
+    .footer-cta .foot .content button{
+      vertical-align: top;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 40px;
+      border-radius: 29px;
+      border: none;
+      background-color: #855fb1;
+    }
+    .footer-cta .foot .content button:hover{
+      vertical-align: top;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 40px;
+      border-radius: 29px;
+      border: none;
+      background-color: #b18bdd;
+      cursor: pointer;
+    }
+    .footer-cta .foot .num{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: -108px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+    }
+    .footer-cta .num .line{
+      width: 1px;
+      height: 80px;
+      border: 1px solid #d1d1df;
+      background-color: #d1d1df;
+      font-size: 0;
+    }
+    .footer-cta .number2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid #d1d1df;
+      background-color: white;
+    }
+    }
+  </style>
+</head>
+<body>
+  <div class="navi">
+    <img src="./assets/logo.svg" alt="Meet logo">
+  </div>
+
+  <div class="hero">
+    <div class="combined">
+      <div class="combined-image">
+        <img src="./assets/tablet/image-hero.png" alt="">
+      </div>
+      <div class="text-content">
+        <p class="font1">Group Chat For Everyone</p>
+        <p class="t-font4">Meet makes it easy to connect with others face-to-face virtually and collaborate across any device.</p>
+        <div class="buttons">
+          <button><p class="d-font5">Download</p><p class="d-font5" style="color: #8fe3f9">v1.3</p></button>
+          <button><p class="d-font5">What is it?</p></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-desktop">
+    <div class="combined">
+      <div class="faces-left">
+        <img src="./assets/desktop/image-hero-left.png" alt="">
+      </div>
+      <div class="text-content">
+        <p class="font1">Group Chat For Everyone</p>
+        <p class="t-font4">Meet makes it easy to connect with others face-to-face virtually and collaborate across any device.</p>
+        <div class="buttons">
+          <button><p class="d-font5">Download</p><p class="d-font5" style="color: #8fe3f9">v1.3</p></button>
+          <button><p class="d-font5">What is it?</p></button>
+        </div>
+      </div>
+      <div class="faces-right">
+        <img src="./assets/desktop/image-hero-right.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="main-contain">
+    <div class="content">
+      <div class="number"><p class="d-font5" style="color: #87879d;">01</p></div>
+      <div class="image-collage">
+        <img src="./assets/desktop/image-woman-in-videocall.jpg" alt="">
+        <img src="./assets/desktop/image-women-videochatting.jpg" alt="">
+        <img src="./assets/desktop/image-men-in-meeting.jpg" alt="">
+        <img src="./assets/desktop/image-man-texting.jpg" alt="">
+      </div>
+      <div class="text-content">
+        <div class="title">
+          <p class="font3" style="color: #4d96a9;"> BUILT FOR MORDEN USE</p>
+          <p class="font2" style="color: #28283d;"> Smarter meetings, all in one place</p>
+        </div>
+        <div class="para"><p class="t-font4" style="color: #87879d;">Send messages, share files, show your screen, and record your meetings — all in one 
+          workspace. Control who can join with invite-only team access, data encryption, and data export.
+         </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-cta">
+    <div class="foot">
+      <div class="num">
+        <div class="line">1</div>
+        <div class="number2 d-font5" style="color: #87879d;">02</div>
+      </div>
+      <div class="content">
+        <p class="font2 p1" style="color: #fafafa;">Experience more together</p>
+        <p class="t-font4 p2" style="color: #fafafa;">Stay connected with reliable HD meetings and unlimited one-on-one and group video sessions.</p>
+        <button><p class="d-font5">Download</p><p class="d-font5" style="color: #d9b8ff;">v1.3</p></button>
+      </div>
+    </div>
+  </div>
+    
+</body>
+</html>
